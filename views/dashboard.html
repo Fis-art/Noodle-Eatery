@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - SMD</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="admin-body">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="/" class="logo sidebar-logo">
+        <i class="fas fa-utensils"></i>
+        <span>SMD</span>
+      </a>
+      <button class="sidebar-toggle" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="nav-item active" data-section="dashboard">
+          <a href="#dashboard"><i class="fas fa-home"></i><span>Dashboard</span></a>
+        </li>
+        <li class="nav-item" data-section="products">
+          <a href="#products"><i class="fas fa-box"></i><span>Produk</span></a>
+        </li>
+        <li class="nav-item" data-section="categories">
+          <a href="#categories"><i class="fas fa-tags"></i><span>Kategori</span></a>
+        </li>
+        <li class="nav-item" data-section="settings">
+          <a href="#settings"><i class="fas fa-cog"></i><span>Pengaturan</span></a>
+        </li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/" target="_blank" class="view-site-btn">
+        <i class="fas fa-external-link-alt"></i>
+        <span>Lihat Website</span>
+      </a>
+      <a href="/api/logout" class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <!-- Top Bar -->
+    <header class="admin-header">
+      <button class="mobile-sidebar-btn" id="mobileSidebarBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <h1 class="page-title" id="pageTitle">Dashboard</h1>
+      <div class="admin-user">
+        <div class="user-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <span>Admin</span>
+      </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section class="admin-section" id="section-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #e94560, #ff6b6b);">
+            <i class="fas fa-box"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="totalProducts">0</h3>
+            <p>Total Produk</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #0ea5e9, #38bdf8);">
+            <i class="fas fa-tags"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="totalCategories">0</h3>
+            <p>Kategori</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #22c55e, #4ade80);">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="availableProducts">0</h3>
+            <p>Tersedia</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="stat-info">
+            <h3 id="featuredProducts">0</h3>
+            <p>Unggulan</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3>Produk Terbaru</h3>
+            <a href="#products" class="card-link">Lihat Semua</a>
+          </div>
+          <div class="card-body">
+            <div class="recent-products" id="recentProducts">
+              <p class="empty-state">Belum ada produk</p>
+            </div>
+          </div>
+        </div>
+        <div class="dashboard-card">
+          <div class="card-header">
+            <h3>Aksi Cepat</h3>
+          </div>
+          <div class="card-body quick-actions">
+            <button class="quick-action-btn" onclick="showSection('products'); openProductModal();">
+              <i class="fas fa-plus"></i>
+              <span>Tambah Produk</span>
+            </button>
+            <button class="quick-action-btn" onclick="showSection('categories'); openCategoryModal();">
+              <i class="fas fa-plus"></i>
+              <span>Tambah Kategori</span>
+            </button>
+            <a href="/" target="_blank" class="quick-action-btn">
+              <i class="fas fa-eye"></i>
+              <span>Lihat Website</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="admin-section hidden" id="section-products">
+      <div class="section-toolbar">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchProducts" placeholder="Cari produk...">
+        </div>
+        <button class="btn btn-primary" onclick="openProductModal()">
+          <i class="fas fa-plus"></i> Tambah Produk
+        </button>
+      </div>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Gambar</th>
+              <th>Nama</th>
+              <th>Kategori</th>
+              <th>Harga</th>
+              <th>Status</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="productsTable">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="admin-section hidden" id="section-categories">
+      <div class="section-toolbar">
+        <h2>Kategori Produk</h2>
+        <button class="btn btn-primary" onclick="openCategoryModal()">
+          <i class="fas fa-plus"></i> Tambah Kategori
+        </button>
+      </div>
+      <div class="categories-grid" id="categoriesGrid">
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section class="admin-section hidden" id="section-settings">
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3><i class="fas fa-store"></i> Informasi Toko</h3>
+          <form id="settingsForm">
+            <div class="form-group">
+              <label>Nama Toko</label>
+              <input type="text" id="settingStoreName" placeholder="Nama toko">
+            </div>
+            <div class="form-group">
+              <label>Alamat</label>
+              <input type="text" id="settingStoreAddress" placeholder="Alamat toko">
+            </div>
+            <div class="form-group">
+              <label>Nomor Telepon</label>
+              <input type="text" id="settingStorePhone" placeholder="Nomor telepon">
+            </div>
+            <div class="form-group">
+              <label>Jam Operasional</label>
+              <input type="text" id="settingStoreHours" placeholder="Jam buka">
+            </div>
+            <div class="form-group">
+              <label>Deskripsi</label>
+              <textarea id="settingStoreDescription" rows="3" placeholder="Deskripsi toko"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Simpan Pengaturan
+            </button>
+          </form>
+        </div>
+        <div class="settings-card">
+          <h3><i class="fas fa-share-alt"></i> Media Sosial</h3>
+          <form id="socialForm">
+            <div class="form-group">
+              <label><i class="fab fa-facebook" style="color:#1877f2"></i> URL Facebook</label>
+              <input type="url" id="settingFacebook" placeholder="https://facebook.com/...">
+            </div>
+            <div class="form-group">
+              <label><i class="fab fa-instagram" style="color:#e1306c"></i> URL Instagram</label>
+              <input type="url" id="settingInstagram" placeholder="https://instagram.com/...">
+            </div>
+            <div class="form-group">
+              <label><i class="fab fa-tiktok"></i> URL TikTok</label>
+              <input type="url" id="settingTiktok" placeholder="https://tiktok.com/@...">
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Simpan Media Sosial
+            </button>
+          </form>
+        </div>
+        <div class="settings-card">
+          <h3><i class="fas fa-lock"></i> Ubah Password</h3>
+          <form id="passwordForm">
+            <div class="form-group">
+              <label>Password Lama</label>
+              <input type="password" id="oldPassword" placeholder="Password lama" required>
+            </div>
+            <div class="form-group">
+              <label>Password Baru</label>
+              <input type="password" id="newPassword" placeholder="Password baru" required>
+            </div>
+            <div class="form-group">
+              <label>Konfirmasi Password</label>
+              <input type="password" id="confirmPassword" placeholder="Ulangi password baru" required>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-key"></i> Ubah Password
+            </button>
+          </form>
+        </div>
+        <div class="settings-card">
+          <h3><i class="fas fa-image"></i> Gambar Website</h3>
+          <form id="heroImageForm" enctype="multipart/form-data">
+            <div class="form-group">
+              <label>Gambar Hero (Background)</label>
+              <p style="font-size:12px; color:var(--gray-500); margin-bottom:8px;">Background gambar di bagian atas homepage</p>
+              <div class="image-preview-box" id="heroImagePreview" style="width:100%; height:140px; border-radius:8px; background:var(--gray-200); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:8px;">
+                <i class="fas fa-image" style="font-size:32px; color:var(--gray-400);"></i>
+              </div>
+              <div class="file-upload">
+                <input type="file" id="heroImageInput" accept="image/*">
+                <label for="heroImageInput">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <span>Pilih Gambar Hero</span>
+                </label>
+              </div>
+              <input type="hidden" name="field" value="hero_image">
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Simpan Gambar Hero
+            </button>
+          </form>
+          <hr style="margin: 24px 0; border: none; border-top: 1px solid var(--gray-200);">
+          <form id="aboutImageForm" enctype="multipart/form-data">
+            <div class="form-group">
+              <label>Gambar Toko (About)</label>
+              <p style="font-size:12px; color:var(--gray-500); margin-bottom:8px;">Foto toko di bagian "Cerita Kami"</p>
+              <div class="image-preview-box" id="aboutImagePreview" style="width:100%; height:140px; border-radius:8px; background:var(--gray-200); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:8px;">
+                <i class="fas fa-store" style="font-size:32px; color:var(--gray-400);"></i>
+              </div>
+              <div class="file-upload">
+                <input type="file" id="aboutImageInput" accept="image/*">
+                <label for="aboutImageInput">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <span>Pilih Gambar Toko</span>
+                </label>
+              </div>
+              <input type="hidden" name="field" value="about_image">
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Simpan Gambar Toko
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Modal -->
+  <div class="modal admin-modal" id="productModal">
+    <div class="modal-content admin-modal-content">
+      <div class="modal-header">
+        <h2 id="productModalTitle">Tambah Produk</h2>
+        <button class="modal-close" onclick="closeProductModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form id="productForm" enctype="multipart/form-data">
+        <input type="hidden" id="productId">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Produk *</label>
+              <input type="text" id="productName" required placeholder="Contoh: Bakso Urat">
+            </div>
+            <div class="form-group">
+              <label>Harga (Rp) *</label>
+              <input type="number" id="productPrice" required placeholder="Contoh: 25000">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Kategori</label>
+            <select id="productCategory">
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea id="productDescription" rows="3" placeholder="Deskripsi produk"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Gambar Produk</label>
+            <div class="file-upload">
+              <input type="file" id="productImage" accept="image/*">
+              <label for="productImage">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Pilih Gambar</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="productFeatured">
+              <span class="checkmark"></span>
+              Tampilkan sebagai Produk Unggulan
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="productAvailable" checked>
+              <span class="checkmark"></span>
+              Tersedia
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Batal</button>
+          <button type="submit" class="btn btn-primary" id="productSubmitBtn">
+            <i class="fas fa-save"></i> Simpan Produk
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal admin-modal" id="categoryModal">
+    <div class="modal-content admin-modal-content modal-sm">
+      <div class="modal-header">
+        <h2 id="categoryModalTitle">Tambah Kategori</h2>
+        <button class="modal-close" onclick="closeCategoryModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form id="categoryForm">
+        <input type="hidden" id="categoryId">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Nama Kategori *</label>
+            <input type="text" id="categoryName" required placeholder="Contoh: Bakso">
+          </div>
+          <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea id="categoryDescription" rows="2" placeholder="Deskripsi kategori"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeCategoryModal()">Batal</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Simpan Kategori
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirm Delete Modal -->
+  <div class="modal admin-modal" id="deleteModal">
+    <div class="modal-content admin-modal-content modal-sm">
+      <div class="modal-header">
+        <h2>Konfirmasi Hapus</h2>
+        <button class="modal-close" onclick="closeDeleteModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="delete-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          <p id="deleteMessage">Apakah Anda yakin ingin menghapus item ini?</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">Batal</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+          <i class="fas fa-trash"></i> Hapus
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

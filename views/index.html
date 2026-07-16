@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakso & Mie Ayam SMD - Enak dan Nikmat di Samarinda</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Social Media Sidebar (Left Top) -->
+  <div class="social-sidebar" id="socialSidebar">
+    <button class="social-toggle" id="socialToggle" title="Ikuti Kami">
+      <i class="fas fa-share-alt"></i>
+    </button>
+    <div class="social-popup" id="socialPopup">
+      <div class="social-popup-header">
+        <h4>Ikuti Kami</h4>
+        <p>Follow media sosial kami</p>
+      </div>
+      <div class="social-popup-links">
+        <a href="#" class="social-popup-link facebook" id="linkFacebook" target="_blank" rel="noopener">
+          <i class="fab fa-facebook-f"></i>
+          <span>Facebook</span>
+        </a>
+        <a href="#" class="social-popup-link instagram" id="linkInstagram" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="#" class="social-popup-link tiktok" id="linkTiktok" target="_blank" rel="noopener">
+          <i class="fab fa-tiktok"></i>
+          <span>TikTok</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="/" class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>SMD</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="tel:" class="btn-order" id="orderBtn">
+          <i class="fas fa-phone"></i>
+          <span>Pesan Sekarang</span>
+        </a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="/" class="logo">
+        <i class="fas fa-utensils"></i>
+        <span>SMD</span>
+      </a>
+      <button class="close-menu" id="closeMenu">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#contact">Kontak</a></li>
+      <li><a href="tel:" class="btn-order-mobile"><i class="fas fa-phone"></i> Pesan Sekarang</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-bg" id="heroBg">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-star"></i>
+        Terenak di Samarinda
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">Bakso</span>
+        <span class="title-ampersand">&</span>
+        <span class="title-line">Mie Ayam</span>
+      </h1>
+      <p class="hero-subtitle" id="storeDesc">Menyajikan bakso dan mie ayam terenak di Samarinda dengan bahan pilihan berkualitas tinggi</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">
+          <i class="fas fa-utensils"></i>
+          Lihat Menu
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <i class="fas fa-map-marker-alt"></i>
+          Lokasi Kami
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-count="500">0</span>
+          <span class="stat-label">Porsi Terjual</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="4.9">0</span>
+          <span class="stat-label">Rating Google</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="5">0</span>
+          <span class="stat-label">Tahun Berdiri</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <a href="#menu">
+        <div class="mouse">
+          <div class="wheel"></div>
+        </div>
+        <span>Gulir ke bawah</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-fire"></i> Menu Kami</span>
+        <h2 class="section-title">Pilihan Menu <span class="highlight">Terbaik</span></h2>
+        <p class="section-desc">Nikmati berbagai pilihan bakso dan mie ayam dengan cita rasa autentik khas Samarinda</p>
+      </div>
+      
+      <!-- Category Filter -->
+      <div class="category-filter" id="categoryFilter">
+        <button class="filter-btn active" data-category="all">
+          <i class="fas fa-th"></i>
+          Semua
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="productsGrid">
+        <div class="loading-spinner">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Memuat menu...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <span class="section-tag"><i class="fas fa-info-circle"></i> Tentang Kami</span>
+          <h2 class="section-title">Cerita <span class="highlight">Kami</span></h2>
+          <p class="about-text">
+            SMD hadir untuk menyajikan bakso dan mie ayam dengan cita rasa autentik dan bahan pilihan berkualitas di Samarinda. 
+            Berdiri sejak 2019, kami terus berkomitmen untuk memberikan yang terbaik bagi para pelanggan setia di Kalimantan Timur.
+          </p>
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Bahan Premium</h4>
+                <p>Daging sapi segar pilihan lokal Samarinda</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Resep Turun Temurun</h4>
+                <p>Rahasia kelezatan keluarga asli Samarinda</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Kebersihan Terjamin</h4>
+                <p>Dibuat dengan standar higienis</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="image-wrapper">
+            <div class="image-placeholder" id="aboutImagePlaceholder">
+              <i class="fas fa-store"></i>
+              <span>SMD Samarinda</span>
+            </div>
+            <img id="aboutStoreImage" class="about-store-image" src="" alt="Toko SMD" style="display:none; width:100%; height:400px; object-fit:cover; border-radius:var(--radius-xl);">
+          </div>
+          <div class="experience-badge">
+            <span class="exp-number">5+</span>
+            <span class="exp-text">Tahun<br>Pengalaman</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-envelope"></i> Hubungi Kami</span>
+        <h2 class="section-title">Kunjungi <span class="highlight">Kami</span></h2>
+        <p class="section-desc">Datang langsung atau hubungi kami untuk pemesanan di Samarinda</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Alamat</h3>
+          <p id="storeAddress">Jl. P. Diponegoro No. 45, Samarinda, Kalimantan Timur</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <h3>Telepon / WhatsApp</h3>
+          <p id="storePhone">0812-3456-7890</p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Jam Buka</h3>
+          <p id="storeHours">08:00 - 21:00 WITA</p>
+        </div>
+      </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127672.15352327398!2d116.106468!3d-0.4948958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df6c7c1e3f0a01%3A0x8db965ae0e0f61c6!2sSamarinda%2C%20East%20Kalimantan!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+          width="100%" 
+          height="400" 
+          style="border:0; border-radius: 16px;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo footer-logo">
+            <i class="fas fa-utensils"></i>
+            <span>SMD</span>
+          </a>
+          <p>Bakso dan Mie Ayam terenak di Samarinda dengan cita rasa autentik</p>
+          <div class="social-links">
+            <a href="#" class="social-link" id="footerFacebook" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link" id="footerInstagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" id="footerTiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link" id="footerWhatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Menu Cepat</h4>
+          <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#contact">Kontak</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Menu Populer</h4>
+          <ul>
+            <li><a href="#menu">Bakso Urat</a></li>
+            <li><a href="#menu">Mie Ayam Spesial</a></li>
+            <li><a href="#menu">Bakso Campur</a></li>
+            <li><a href="#menu">Es Teh Manis</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Lokasi Kami</h4>
+          <p>Jl. P. Diponegoro No. 45, Samarinda, Kalimantan Timur</p>
+          <div class="social-links" style="margin-top: 16px;">
+            <a href="#" class="social-link" id="footerFacebook2" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link" id="footerInstagram2" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" id="footerTiktok2" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SMD - Bakso & Mie Ayam Samarinda. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <a href="#home" class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Product Modal -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-body">
+        <div class="modal-image">
+          <div class="image-placeholder" id="modalImage">
+            <i class="fas fa-utensils"></i>
+          </div>
+        </div>
+        <div class="modal-info">
+          <span class="modal-category" id="modalCategory"></span>
+          <h2 class="modal-title" id="modalTitle"></h2>
+          <p class="modal-desc" id="modalDesc"></p>
+          <div class="modal-price" id="modalPrice"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
