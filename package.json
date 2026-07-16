@@ -1,7 +1,7 @@
 {
-  "name": "bakso-mie-ayam-smd",
+  "name": "toko-online-template",
   "version": "1.0.0",
-  "description": "Website Bakso dan Mie Ayam SMD",
+  "description": "Template website toko makanan dengan admin panel - Express.js + JSON database",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

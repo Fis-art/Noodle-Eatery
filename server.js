@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 // JSON File Database
 // ============================================
 const DB_DIR = path.join(__dirname, 'data');
-const DB_FILE = path.join(DB_DIR, 'db.json');
+const DB_FILE = path.join(DB_DIR, 'store.json');
 
 function ensureDbExists() {
   if (!fs.existsSync(DB_DIR)) {
